@@ -1,12 +1,13 @@
 fx_version 'cerulean'
-game 'rdr3'
+games {'gta5', 'rdr3'}
 rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
 
 author 'BerkieB'
-description 'An optimized interaction system for FiveM, based on qtarget'
-version '5.2.2'
+description 'bt-target rewritten with the help of qtarget, Archangelza1 and myself to make the best interaction system for FiveM whilst keeping the best optimization possible!'
+version '2.4.8'
 
 ui_page 'html/index.html'
+
 
 client_scripts {
 	'@PolyZone/client.lua',
@@ -14,17 +15,17 @@ client_scripts {
 	'@PolyZone/EntityZone.lua',
 	'@PolyZone/CircleZone.lua',
 	'@PolyZone/ComboZone.lua',
-	'init.lua',
-	'client.lua',
+	'client/*.lua',
 }
 
 files {
-	'data/*.lua',
+	'config.lua',
 	'html/*.html',
 	'html/css/*.css',
 	'html/js/*.js'
 }
 
-lua54 'yes'
-
-dependency 'PolyZone'
+dependencies {
+	"PolyZone",
+	"qbr-core"
+}
