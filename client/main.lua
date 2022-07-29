@@ -753,16 +753,30 @@ end)
 
 local enabled = false
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
 		Wait(0)
-		if IsControlJustPressed(0, 0x8AAA0AD4) then
-			if (not enabled) then
-				ExecuteCommand('+playerTarget')
-				enabled = true
-			else
-				ExecuteCommand('-playerTarget')
-				enabled = false
+		if Config.Toggle then
+			if IsControlJustPressed(0, 0x8AAA0AD4) then
+				if (not enabled) then
+					ExecuteCommand('+playerTarget')
+					enabled = true
+				else
+					ExecuteCommand('-playerTarget')
+					enabled = false
+				end
+			end
+		else
+			if IsControlPressed(0, 0x8AAA0AD4) then
+				if (not enabled) then
+					ExecuteCommand('+playerTarget')
+					enabled = true
+				end
+			elseif IsControlReleased(0, 0x8AAA0AD4) then
+				if enabled then
+					ExecuteCommand('-playerTarget')
+					enabled = false
+				end
 			end
 		end
 	end
